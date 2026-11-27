@@ -1,0 +1,605 @@
+/* Keep element widths predictable as padding and borders are added. */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Element selectors set the page's shared typography and base colors. */
+body {
+  margin: 0;
+  padding: 0;
+  color: #28332d;
+  background-color: #fcf8f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1, h2, h3 {
+  color: #1b4332;
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 700px;
+  margin-bottom: 1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+a {
+  color: inherit;
+}
+
+/* Unique ID selector styles the site's main header. */
+#page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  background-color: #2d6a4f;
+  box-shadow: 0 2px 8px rgba(31, 54, 41, 0.14);
+}
+
+.site-nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.brand {
+  margin: 0;
+  color: inherit;
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.promo-banner {
+  padding: 0.7rem 1rem;
+  color: #3c382d;
+  background-color: #f4c18b;
+  text-align: center;
+}
+
+.promo-banner p {
+  margin: 0;
+  font-weight: 600;
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* Reusable card component for the hero and story sections. */
+.feature-card {
+  margin-bottom: 2.5rem;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid #e9dfd1;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 12px 35px rgba(54, 67, 54, 0.07);
+}
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  padding-right: 1.5rem;
+  padding-bottom: 13rem;
+  background: linear-gradient(120deg, #fff 45%, #f6eadb 100%);
+}
+
+.hero-card .intro {
+  max-width: 570px;
+  margin-bottom: 1.7rem;
+  color: #526158;
+  font-size: 1.2rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.65rem;
+  color: #bd6845;
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.3rem;
+  border: 2px solid #2d6a4f;
+  border-radius: 999px;
+  color: #fff;
+  background: #2d6a4f;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: #2d6a4f;
+  background: transparent;
+  transform: translateY(-2px);
+}
+
+.crate-art {
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  width: 80%;
+  max-width: 440px;
+  transform: translateX(50%);
+}
+
+.crate-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product-showcase {
+  margin: 0 auto 4rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.section-heading p:last-child {
+  max-width: 440px;
+  color: #647067;
+}
+
+/* Reusable product card, with deliberate spacing and a clear hierarchy. */
+.product-card {
+  position: relative;
+  padding: 1.4rem;
+  border: 1px solid #e7ddce;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(54, 67, 54, 0.08);
+}
+
+.featured-product {
+  display: grid;
+  grid-column: auto;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #fff 45%, #f7ecdf 100%);
+}
+
+.featured-product .product-illustration {
+  margin-bottom: 0.5rem;
+}
+
+.product-copy .eyebrow {
+  margin-bottom: 0.45rem;
+}
+
+.product-illustration {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 170px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  border-radius: 10px;
+  color: #bd6845;
+  background: #f7ecdf;
+  font-size: 2rem;
+}
+
+.product-illustration span:nth-child(1) {
+  align-self: flex-start;
+  margin-top: 2rem;
+}
+
+.product-illustration span:nth-child(2) {
+  align-self: flex-end;
+  margin-bottom: 2rem;
+  color: #59805a;
+}
+
+.product-illustration span:nth-child(3) {
+  align-self: flex-start;
+  margin-top: 2.5rem;
+  color: #d4a64d;
+}
+
+.mini-crate {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  width: 150px;
+  padding: 1.2rem 0.5rem;
+  border: 7px double #f1c99e;
+  border-radius: 4px;
+  color: #fff8ed;
+  background: #a9613e;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.product-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.product-card p {
+  color: #647067;
+}
+
+.product-card .product-price {
+  margin-bottom: 1rem;
+  color: #2d6a4f;
+  font-weight: 700;
+}
+
+.new-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  color: #fff;
+  background: #bd6845;
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.text-link {
+  color: #2d6a4f;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.layout-practice {
+  margin: 0 auto 4rem;
+}
+
+.area-layout {
+  display: grid;
+  grid-template-areas:
+    "page-header"
+    "main"
+    "sidebar";
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e7ddce;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(54, 67, 54, 0.06);
+}
+
+.area-header {
+  grid-area: page-header;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  color: #fff;
+  background: #2d6a4f;
+  font-weight: 700;
+}
+
+.area-sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #f4f9f5;
+}
+
+.area-sidebar h3,
+.area-main h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.1rem;
+}
+
+.area-sidebar a {
+  color: #2d6a4f;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.area-main {
+  grid-area: main;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #fcf8f2;
+}
+
+.area-main p,
+.layout-note {
+  margin-bottom: 0;
+  color: #526158;
+}
+
+.layout-note {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid #8eb49a;
+  background: #f4f9f5;
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  background: #f4f9f5;
+}
+
+.story-card p:not(.eyebrow) {
+  color: #526158;
+}
+
+.takeaways {
+  padding: 1.5rem;
+  border-left: 3px solid #8eb49a;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.takeaways h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.takeaways ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.takeaways li {
+  margin-bottom: 0.55rem;
+}
+
+.contact-card {
+  padding: 2.5rem 1.5rem;
+  border-radius: 18px;
+  background: #f4e1cc;
+  text-align: center;
+}
+
+.contact-card h2 {
+  margin-bottom: 0.7rem;
+}
+
+.contact-card p:not(.eyebrow) {
+  margin-bottom: 1.3rem;
+  color: #526158;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 620px;
+  margin: 1.5rem auto 0;
+  text-align: left;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  color: #1b4332;
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #b9aa98;
+  border-radius: 8px;
+  color: #28332d;
+  background: #fff;
+  font: inherit;
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 3px solid #8eb49a;
+  outline-offset: 2px;
+}
+
+.form-field [aria-invalid="true"] {
+  border-color: #a63d32;
+}
+
+.form-message {
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.form-message.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.field-message {
+  min-height: 1.4em;
+  color: #9b3028;
+  font-size: 0.9rem;
+}
+
+.form-status {
+  color: #1b4332;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-status.status-error {
+  color: #9b3028;
+}
+
+.site-footer {
+  padding: 2rem 1.5rem;
+  color: #fff;
+  background: #1b4332;
+  text-align: center;
+}
+
+.site-footer .brand {
+  margin-bottom: 0.3rem;
+}
+
+.site-footer p:not(.brand) {
+  margin-bottom: 0.8rem;
+  color: #d6e4d9;
+}
+
+.site-footer small {
+  color: #bfd0c3;
+}
+
+@media (min-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-product {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 701px) {
+  .site-nav {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+    font-size: 1rem;
+  }
+
+  #page-header {
+    padding: 1rem 1.5rem;
+  }
+
+  main {
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .feature-card {
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-card {
+    min-height: 440px;
+    padding-right: 40%;
+    padding-bottom: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .crate-art {
+    right: 1.5rem;
+    bottom: 0.75rem;
+    width: 40%;
+    transform: none;
+  }
+
+  .featured-product {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .featured-product .product-illustration {
+    margin-bottom: 0;
+  }
+
+  .area-layout {
+    grid-template-areas:
+      "page-header page-header"
+      "sidebar main";
+    grid-template-columns: minmax(180px, 0.7fr) minmax(0, 2fr);
+  }
+
+  .story-card {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
